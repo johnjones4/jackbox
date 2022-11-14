@@ -26,9 +26,18 @@ void setup() {
   // put your setup code here, to run once:
 }
 
+void resetPins() {
+  for (int i = 0; i < N_PINS; i++) {
+    digitalWrite(outputPins[i], LOW);
+  }
+}
+
 void loop() {
   long now = millis();
   mode m = selector.getCurrentMode();
+  if (m != lastMode) {
+    resetPins();
+  }
   if (m != lastMode || now - lastNext >= delayMillis) {
     lastNext = now;
     switch (m)
