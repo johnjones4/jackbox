@@ -12,7 +12,7 @@ ModeSwitch selector(inputPins);
 #define MIN_DELAY 10
 #define MAX_DELAY 1000
 
-const int outputPins[N_PINS] = {8,9,10,11};
+const int outputPins[N_PINS] = {6,7,8,9};
 ModeSolid solid(outputPins);
 ModeDirection forward(outputPins, RATE_PIN, MIN_DELAY, MAX_DELAY, 1);
 ModeDirection backwards(outputPins, RATE_PIN, MIN_DELAY, MAX_DELAY, -1);
