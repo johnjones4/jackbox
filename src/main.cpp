@@ -18,26 +18,34 @@ ModeDirection forward(outputPins, RATE_PIN, MIN_DELAY, MAX_DELAY, 1);
 ModeDirection backwards(outputPins, RATE_PIN, MIN_DELAY, MAX_DELAY, -1);
 ModeBounce bounce(outputPins, RATE_PIN, MIN_DELAY, MAX_DELAY);
 
+long delayMillis = 0;
+long lastNext = 0;
+mode lastMode = mode::MODE_A;
+
 void setup() {
   // put your setup code here, to run once:
 }
 
 void loop() {
+  long now = millis();
   mode m = selector.getCurrentMode();
-  switch (m)
-  {
-  case mode::MODE_A:
-    solid.next();
-    break;
-  case mode::MODE_B:
-    forward.next();
-    break;
-  case mode::MODE_C:
-    backwards.next();
-    break;
-  case mode::MODE_D:
-    bounce.next();
-    break;
+  if (m != lastMode || now - lastNext >= delayMillis) {
+    lastNext = now;
+    switch (m)
+    {
+    case mode::MODE_A:
+      delayMillis = solid.next();
+      break;
+    case mode::MODE_B:
+      delayMillis = forward.next();
+      break;
+    case mode::MODE_C:
+      delayMillis = backwards.next();
+      break;
+    case mode::MODE_D:
+      delayMillis = bounce.next();
+      break;
+    }
   }
 }
 

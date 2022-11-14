@@ -9,7 +9,7 @@ protected:
   int pins[N_PINS];
 public:
   ModeAction(const int _pins[N_PINS]);
-  void next();
+  long next();
 };
 
 #endif

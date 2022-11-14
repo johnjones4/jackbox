@@ -13,7 +13,7 @@ private:
   int maxDelay;
 public:
   ModeDirection(const int _pins[N_PINS], int _ratePin, long _minDelay, long _maxDelay, int _delta);
-  void next();
+  long next();
   void step();
 };
 

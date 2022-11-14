@@ -9,11 +9,12 @@ ModeSolid::ModeSolid(const int _pins[N_PINS]) : ModeAction(_pins)
 
 }
 
-void ModeSolid::next()
+long ModeSolid::next()
 {
   for (int i = 0; i < N_PINS; i++) {
     digitalWrite(pins[i], HIGH);
   }
+  return 0;
 }
 
 #endif

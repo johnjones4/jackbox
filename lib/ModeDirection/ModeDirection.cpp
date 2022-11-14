@@ -21,15 +21,14 @@ void ModeDirection::step()
   }
 }
 
-void ModeDirection::next()
+long ModeDirection::next()
 {
-  int value = analogRead(ratePin);
-  float rate = float(value) / 1023.0;
-  long delayMillis = (maxDelay - minDelay) * rate + minDelay;
-  delay(delayMillis);
   digitalWrite(pins[index], LOW);
   step();
   digitalWrite(pins[index], HIGH);
+  int value = analogRead(ratePin);
+  float rate = float(value) / 1023.0;
+  return (maxDelay - minDelay) * rate + minDelay;
 }
 
 #endif

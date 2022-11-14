@@ -5,7 +5,7 @@
 class ModeSolid: public ModeAction
 {
 public:
-  void next();
+  long next();
   ModeSolid(const int _pins[N_PINS]);
 };
 

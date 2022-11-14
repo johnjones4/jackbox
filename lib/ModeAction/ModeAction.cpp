@@ -11,6 +11,8 @@ ModeAction::ModeAction(const int _pins[N_PINS])
   }
 }
 
-void ModeAction::next() {}
+long ModeAction::next() {
+  return 0;
+}
 
 #endif
